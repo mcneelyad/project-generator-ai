@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Create Project{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/project_management/create.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <form method="POST" action="{% url 'project_management:create' %}" id="create_project_form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter project name ...">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter project description ..."></textarea>
+        </div>
+        <div class="form-group">
+            <label for="platform">Platform</label>
+            <select class="form-control" id="platform" name="platform">
+                <option value="default">Select a platform ...</option>
+                {% for label, value in platform_choices %}
+                <option value="{{ value }}">{{ label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="framework">Framework</label>
+            <select class="form-control" id="framework" name="framework">
+                <option value="default">Select a framework ...</option>
+                {% for label, value in framework_choices %}
+                <option value="{{ value }}">{{ label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" id="create_project_btn">Create Project</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+var create_project_btn = document.getElementById('create_project_btn');
+
+create_project_btn.addEventListener('click', function(event) {
+    console.log('Form submitted');
+    var name = document.getElementById('name').value.trim();
+    var description = document.getElementById('description').value.trim();
+    var platform = document.getElementById('platform').value;
+    var framework = document.getElementById('framework').value;
+
+    if (name === '' || description === '' || platform === 'default' || framework === 'default') {
+        event.preventDefault();
+        alert('Please fill out all fields before submitting the form.');
+    }
+});
+</script>
+{% endblock %}

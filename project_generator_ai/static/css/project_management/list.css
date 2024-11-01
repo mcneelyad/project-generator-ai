@@ -1,0 +1,10 @@
+#create_project_btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    float: right;
+}

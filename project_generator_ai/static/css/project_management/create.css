@@ -1,0 +1,35 @@
+#create_project_form {
+    margin: 0 auto;
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+#create_project_btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#create_project_btn:hover {
+    background-color: #45a049;
+}

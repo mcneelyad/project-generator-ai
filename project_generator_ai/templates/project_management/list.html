@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Project List{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/project_management/list.css' %}" type="text/css">
+{% endblock %}
+
+
+{% block content %}
+<a id="create_project" href="{% url 'project_management:create' %}" id="create_project_btn">Create Project</a>
+<table id="project_list" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Project Name</th>
+            <th>Project Description</th>
+            <th>Project Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for project in projects %}
+        <tr>
+            <td>{{ project.name }}</td>
+            <td>{{ project.description }}</td>
+            <td>{{ project.status }}</td>
+            <td>
+                {% comment %} <a href="{% url 'project_management:project_detail' project.id %}" class="btn btn-primary">View</a> {% endcomment %}
+                {% comment %} <a href="{% url 'project_management:project_update' project.id %}" class="btn btn-secondary">Update</a> {% endcomment %}
+                {% comment %} <a href="{% url 'project_management:project_delete' project.id %}" class="btn btn-danger">Delete</a> {% endcomment %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+{% endblock %}
